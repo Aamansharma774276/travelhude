@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelHude - Your Travel Partner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>TravelHude</h1>
+                <span class="tagline">Your Travel Partner</span>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#destinations" class="nav-link">Destinations</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="login-btn" onclick="openLoginModal()">Login</button>
+            </nav>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Your Next <span class="highlight">Adventure</span></h1>
+            <p class="hero-subtitle">Explore amazing destinations with our curated travel packages</p>
+            
+            <!-- Search Form -->
+            <div class="search-container">
+                <div class="search-tabs">
+                    <button class="search-tab active" onclick="switchTab('packages')">Packages</button>
+                    <button class="search-tab" onclick="switchTab('flights')">Flights</button>
+                    <button class="search-tab" onclick="switchTab('hotels')">Hotels</button>
+                    <button class="search-tab" onclick="switchTab('cabs')">Cabs</button>
+                </div>
+                
+                <div class="search-form" id="packagesSearch">
+                    <input type="text" placeholder="Where do you want to go?" class="search-input">
+                    <input type="date" class="search-input">
+                    <select class="search-input">
+                        <option>2 Adults</option>
+                        <option>1 Adult</option>
+                        <option>3 Adults</option>
+                        <option>4+ Adults</option>
+                    </select>
+                    <button class="search-btn" onclick="searchPackages()">Search Packages</button>
+                </div>
+                
+                <div class="search-form hidden" id="flightsSearch">
+                    <input type="text" placeholder="From" class="search-input">
+                    <input type="text" placeholder="To" class="search-input">
+                    <input type="date" class="search-input">
+                    <button class="search-btn" onclick="searchFlights()">Search Flights</button>
+                </div>
+                
+                <div class="search-form hidden" id="hotelsSearch">
+                    <input type="text" placeholder="Destination" class="search-input">
+                    <input type="date" class="search-input">
+                    <input type="date" class="search-input">
+                    <button class="search-btn" onclick="searchHotels()">Search Hotels</button>
+                </div>
+                
+                <div class="search-form hidden" id="cabsSearch">
+                    <input type="text" placeholder="Pickup Location" class="search-input">
+                    <input type="text" placeholder="Drop Location" class="search-input">
+                    <input type="datetime-local" class="search-input">
+                    <button class="search-btn" onclick="searchCabs()">Search Cabs</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="hero-stats">
+            <div class="stat">
+                <h3>10,000+</h3>
+                <p>Happy Travelers</p>
+            </div>
+            <div class="stat">
+                <h3>500+</h3>
+                <p>Destinations</p>
+            </div>
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Discover the most loved travel destinations</p>
+            </div>
+            
+            <div class="destinations-grid">
+                <div class="destination-card" onclick="viewDestination('golden-triangle')">
+                    <div class="destination-image golden-triangle"></div>
+                    <div class="destination-info">
+                        <h3>Golden Triangle</h3>
+                        <p>Delhi - Agra - Jaipur</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.8 (2,340 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹15,999</div>
+                    </div>
+                </div>
+                
+                <div class="destination-card" onclick="viewDestination('kashmir')">
+                    <div class="destination-image kashmir"></div>
+                    <div class="destination-info">
+                        <h3>Kashmir Paradise</h3>
+                        <p>Srinagar - Gulmarg - Pahalgam</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.9 (1,890 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹24,999</div>
+                    </div>
+                </div>
+                
+                <div class="destination-card" onclick="viewDestination('goa')">
+                    <div class="destination-image goa"></div>
+                    <div class="destination-info">
+                        <h3>Goa Beaches</h3>
+                        <p>North & South Goa</p>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>4.6 (3,120 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹18,999</div>
+                    </div>
+                </div>
+                
+                <div class="destination-card" onclick="viewDestination('kerala')">
+                    <div class="destination-image kerala"></div>
+                    <div class="destination-info">
+                        <h3>Kerala Backwaters</h3>
+                        <p>Kochi - Munnar - Alleppey</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.7 (2,670 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹22,999</div>
+                    </div>
+                </div>
+                
+                <div class="destination-card" onclick="viewDestination('ladakh')">
+                    <div class="destination-image ladakh"></div>
+                    <div class="destination-info">
+                        <h3>Ladakh Adventure</h3>
+                        <p>Leh - Nubra Valley - Pangong</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.9 (1,450 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹35,999</div>
+                    </div>
+                </div>
+                
+                <div class="destination-card" onclick="viewDestination('rajasthan')">
+                    <div class="destination-image rajasthan"></div>
+                    <div class="destination-info">
+                        <h3>Rajasthan Royal</h3>
+                        <p>Jodhpur - Jaisalmer - Udaipur</p>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                            <span>4.5 (2,890 reviews)</span>
+                        </div>
+                        <div class="price">Starting from ₹28,999</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Packages -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Travel Packages</h2>
+                <p>Handpicked packages for unforgettable experiences</p>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-image golden-triangle"></div>
+                    <div class="package-content">
+                        <div class="package-badge">Best Seller</div>
+                        <h3>Golden Triangle Tour</h3>
+                        <p class="package-duration">6 Days / 5 Nights</p>
+                        <div class="package-features">
+                            <span>✓ 4-Star Hotels</span>
+                            <span>✓ All Meals</span>
+                            <span>✓ AC Transport</span>
+                            <span>✓ Guide Included</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="original-price">₹19,999</span>
+                            <span class="current-price">₹15,999</span>
+                            <span class="discount">20% OFF</span>
+                        </div>
+                        <button class="book-btn" onclick="bookPackage('golden-triangle')">Book Now</button>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-image kashmir"></div>
+                    <div class="package-content">
+                        <div class="package-badge">Premium</div>
+                        <h3>Kashmir Paradise</h3>
+                        <p class="package-duration">7 Days / 6 Nights</p>
+                        <div class="package-features">
+                            <span>✓ 5-Star Hotels</span>
+                            <span>✓ Houseboat Stay</span>
+                            <span>✓ Shikara Ride</span>
+                            <span>✓ Cable Car</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="original-price">₹29,999</span>
+                            <span class="current-price">₹24,999</span>
+                            <span class="discount">17% OFF</span>
+                        </div>
+                        <button class="book-btn" onclick="bookPackage('kashmir')">Book Now</button>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-image goa"></div>
+                    <div class="package-content">
+                        <div class="package-badge">Popular</div>
+                        <h3>Goa Beach Holiday</h3>
+                        <p class="package-duration">5 Days / 4 Nights</p>
+                        <div class="package-features">
+                            <span>✓ Beach Resort</span>
+                            <span>✓ Water Sports</span>
+                            <span>✓ Cruise Dinner</span>
+                            <span>✓ Sightseeing</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="original-price">₹22,999</span>
+                            <span class="current-price">₹18,999</span>
+                            <span class="discount">15% OFF</span>
+                        </div>
+                        <button class="book-btn" onclick="bookPackage('goa')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose TravelHude?</h2>
+                <p>We make your travel dreams come true</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Booking</h3>
+                    <p>100% secure payment with instant confirmation and money-back guarantee</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support via phone, email, and live chat</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Best Prices</h3>
+                    <p>Guaranteed best prices with no hidden charges and price match promise</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Expert Guides</h3>
+                    <p>Professional local guides with deep knowledge of destinations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Comfortable Travel</h3>
+                    <p>AC vehicles, comfortable accommodations, and seamless transfers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Easy Booking</h3>
+                    <p>Simple online booking process with instant confirmation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated with Travel Deals</h2>
+                <p>Subscribe to our newsletter and get exclusive offers and travel tips</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" id="newsletterEmail">
+                    <button onclick="subscribeNewsletter()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TravelHude</h3>
+                    <p>Your ultimate travel companion for amazing adventures across India and beyond.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘 Facebook</a>
+                        <a href="#" class="social-link">📷 Instagram</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
+                        <a href="#" class="social-link">📺 YouTube</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Hotel Booking</a></li>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Cab Booking</a></li>
+                        <li><a href="#">Custom Tours</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p>📞 +91-7877008195</p>
+                        <p>✉️ info.travelhude@gmail.com</p>
+                        <p>📍 Jaipur, Rajasthan, India</p>
+                        <p>🕒 24/7 Customer Support</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TravelHude. All rights reserved. | Privacy Policy | Terms & Conditions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to TravelHude</h2>
+            
+            <div class="role-selector">
+                <button class="role-btn active" onclick="selectRole('traveler')">🧳 Traveler</button>
+                <button class="role-btn" onclick="selectRole('admin')">👨‍💼 Admin</button>
+            </div>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-submit-btn">Login</button>
+            </form>
+            
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" onclick="openSignupModal()">Sign Up</a></p>
+                <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2>Book Your Package</h2>
+            <div id="bookingContent">
+                <!-- Booking form will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+        <button onclick="closeNotification()">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
